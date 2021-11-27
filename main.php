@@ -46,37 +46,37 @@ if (isset($_SESSION['id'])) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/style.css">
+        <link rel="shortcut icon" href="./img/fav.png" type="image/png">
         <title>Accueil</title>
     </head>
 
     <body>
         <header>
-            <h1 onclick="gotoindex();">Accueil</h1>
+            <h1>
+                <a href="./main.php">Accueil</a>
+            </h1>
         </header>
         <form action="" method="post" class="deco-container">
             <button type="submit" name="disconected"><img src="./img/exit.png" alt=""></button>
         </form>
         <main>
             <div class="infosaccount">
-                <p class="" style="font-family: Arial, Helvetica, sans-serif;">ID:<?php echo $usersinfo['id']; ?></p>
-                <p class="" style="font-family: Arial, Helvetica, sans-serif;">E-MAIL:<?php echo $usersinfo['login']; ?></p>
-                <p class="" style="font-family: Arial, Helvetica, sans-serif;">PRENOM:<?php echo $usersinfo['prenom']; ?></p>
-                <p class="" style="font-family: Arial, Helvetica, sans-serif;">NOM:<?php echo $usersinfo['nom']; ?></p>
-                <p class="" style="font-family: Arial, Helvetica, sans-serif;">MOT DE PASSE:<?php echo $usersinfo['password']; ?></p>
-                <p class="" style="font-family: Arial, Helvetica, sans-serif;">ADMIN:<?php echo $admin; ?></p>
+                <h2>Bienvenue</h2>
+                <h3><?php echo $usersinfo['prenom']; ?> <?php echo $usersinfo['nom']; ?></h3>
             </div>
             <div class="btn-content">
                 <form action="" method="post" class="formdo">
                     <button id="btn-edit" class="btn-choise" type="submit" name="edit-account">Editer le compte</button>
                 </form>
-                <?php if ($usersinfo['admin'] == 1) { ?>
+                <?php if ($usersinfo['login'] == 'admin') { ?>
                     <form action="" method="post" class="formdo">
                         <button id="btn-admin" class="btn-choise" type="submit" name="space-admin">Espace Admin</button>
                     </form>
+                <?php } else { ?>
+                    <form action="" method="post" class="formdo">
+                        <button id="btn-admin-none" class="btn-choise" type="button" name="space-admin">Admin Innacesible</button>
+                    </form>
                 <?php } ?>
-                <form action="" method="post" class="formdo">
-                    <button id="btn-gold" class="btn-choise" type="submit" name="golden-book">Livre d'or</button>
-                </form>
                 <form action="" method="post" class="formdo">
                     <button id="btn-delete" class="btn-choise" type="submit" name="delete-account">Supprimer le compte</button>
                 </form>
@@ -86,7 +86,9 @@ if (isset($_SESSION['id'])) {
     </body>
 
     </html>
-    <script src="./js/goto.js"></script>
+
 <?php
+} else {
+    header('Location: ./index.php');
 }
 ?>

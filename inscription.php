@@ -16,14 +16,13 @@ if (isset($_POST['form-sign-up'])) {
         if ($prenomlenght >= 2 && $prenomlenght <= 18) {
             $nomlenght = strlen($nom);
             if ($nomlenght >= 2 && $nomlenght <= 18) {
+                $loginlenght = strlen($login);
+                if ($loginlenght >= 2 && $loginlenght <= 18) {
+                    $getlogin = $bdd->prepare("SELECT * FROM utilisateurs WHERE login = ?");
+                    $getlogin->execute(array($login));
+                    $logincount = $getlogin->rowCount();
 
-
-                if (filter_var($login, FILTER_VALIDATE_EMAIL)) {
-                    $reqmail = $bdd->prepare("SELECT * FROM utilisateurs WHERE login = ?");
-                    $reqmail->execute(array($login));
-                    $mailexist = $reqmail->rowCount();
-
-                    if ($mailexist == 0) {
+                    if ($logincount == 0) {
                         if ($password == $confirm_password) {
                             $inserusers = $bdd->prepare("INSERT INTO utilisateurs ( prenom, nom, login, password, admin) VALUES (?, ?, ?, ?, ?)");
                             $inserusers->execute(array($prenom, $nom, $login, $password, 0));
@@ -58,7 +57,7 @@ if (isset($_POST['form-sign-up'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/inscription.css">
-    <link rel="shortcut icon" type="image/png" href="" />
+    <link rel="shortcut icon" href="./img/fav.png" type="image/png">
     <title>Inscription</title>
 </head>
 
@@ -75,7 +74,7 @@ if (isset($_POST['form-sign-up'])) {
                 <input type="text" name="nom" class="login-input" placeholder="Nom" value="">
             </div>
             <div class="container-input">
-                <input type="mail" name="login" class="login-input" placeholder="E-mail" value="">
+                <input type="text" name="login" class="login-input" placeholder="Login" value="">
             </div>
             <div class="container-input">
                 <input type="password" name="password" class="login-input" placeholder="Mot de Passe">

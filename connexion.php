@@ -17,7 +17,6 @@ if (isset($_POST['form-sign-in'])) {
 
             $_SESSION['id'] = $usersinfo['id'];
             
-
             header("Location: ./main.php");
         } else {
             $erreur = "Compte Introuvable";
@@ -35,7 +34,7 @@ if (isset($_POST['form-sign-in'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/inscription.css">
-    <link rel="shortcut icon" type="image/png" href="" />
+    <link rel="shortcut icon" href="./img/fav.png" type="image/png">
     <title>Connexion</title>
 </head>
 
@@ -46,7 +45,7 @@ if (isset($_POST['form-sign-in'])) {
     <main>
         <form action="" method="POST" id="form-co">
             <div class="container-input">
-                <input type="mail" name="login" class="login-input" placeholder="E-mail" value="">
+                <input type="mail" name="login" class="login-input" placeholder="Login" value="">
             </div>
             <div class="container-input">
                 <input type="password" name="password" class="login-input" placeholder="Mot de Passe">
