@@ -1,0 +1,103 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    color: white;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'fargo';
+}
+
+body {
+    background-image: url('../img/background.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    width: 100%;
+    height: calc(100% - 10%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    width: 50%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+#form-co {
+    height: 70%;
+}
+
+.container-input {
+
+    width: 100%;
+    height: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-input {
+    width: 60%;
+    height: 100%;
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(128, 0, 128, 0.432);
+    border: thistle 1px solid;
+    border-radius: 25px;
+    outline: none;
+}
+
+.login-input::placeholder {
+    color: white;
+}
+
+.login-submit {
+    cursor: pointer;
+    width: 60%;
+    height: 100%;
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(128, 128, 128, 0.534);
+    border: thistle 1px solid;
+    border-radius: 25px;
+    outline: none;
+}
+
+.login-submit:active, .login-submit:focus, .login-submit:hover {
+    background-color: rgba(161, 47, 190, 0.24);
+}
+
+.login-sign-up,.login-sign-in, .error, .verygut {
+    width: 100%;
+    height: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@font-face {
+    font-family: 'fargo';
+    src: url('../font/fargo.otf');
+}
