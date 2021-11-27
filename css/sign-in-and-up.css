@@ -12,9 +12,7 @@ body {
 }
 
 body {
-    background-image: url('../img/background.jpg');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    background-color: #262632;
 }
 
 header {
@@ -45,25 +43,32 @@ form {
 }
 
 .container-input {
-
-    width: 100%;
+    width: 50%;
     height: 8%;
+    border-radius: 25px;
+    margin: 2%;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: rgb(253, 232, 132);
+    background: linear-gradient(90deg, rgba(253, 232, 132, 1) 0%, rgba(148, 87, 18, 1) 50%, rgba(124, 64, 10, 1) 100%);
+}
+
+input {
+    background-color: transparent;
+    border: none;
 }
 
 .login-input {
-    width: 60%;
-    height: 100%;
-    padding: 1%;
+    width: 97%;
+    height: 75%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(128, 0, 128, 0.432);
-    border: thistle 1px solid;
-    border-radius: 25px;
     outline: none;
+    background-color: #262632;
+    border-radius: 25px;
+    text-align: center;
 }
 
 .login-input::placeholder {
@@ -72,29 +77,20 @@ form {
 
 .login-submit {
     cursor: pointer;
-    width: 60%;
+    width: 100%;
     height: 100%;
     padding: 1%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgba(128, 128, 128, 0.534);
-    border: thistle 1px solid;
+    border: none;
     border-radius: 25px;
     outline: none;
 }
 
-.login-submit:active, .login-submit:focus, .login-submit:hover {
-    background-color: rgba(161, 47, 190, 0.24);
-}
-
-.login-sign-up,.login-sign-in, .error, .verygut {
-    width: 100%;
-    height: 8%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.login-submit:hover {
+    background-color: rgba(128, 128, 128, 0.192);
 }
 
 @font-face {

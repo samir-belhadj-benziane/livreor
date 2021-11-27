@@ -6,33 +6,8 @@ if (isset($_SESSION['id'])) {
 
     if (isset($_POST['form-sign-up'])) {
 
-        $prenom = htmlspecialchars($_POST['prenom']);
-        $nom = htmlspecialchars($_POST['nom']);
         $login = htmlspecialchars($_POST['login']);
         $password = sha1($_POST['password']);
-        $confirm_password = sha1($_POST['confirm_password']);
-
-        if (!empty($_POST['prenom'])) {
-            $prenomlenght = strlen($prenom);
-            if ($prenomlenght >= 2 && $prenomlenght <= 18) {
-                $inserprenom = $bdd->prepare("UPDATE utilisateurs SET prenom = ? WHERE id = ?");
-                $inserprenom->execute(array($prenom, $_SESSION['id']));
-                $reussi = "Vous avez modifié votre prenom";
-            } else {
-                $erreur = "Votre prenom doit contenir 2 a 18 caractères !";
-            }
-        }
-
-        if (!empty($_POST['nom'])) {
-            $nomlenght = strlen($nom);
-            if ($nomlenght >= 2 && $nomlenght <= 18) {
-                $insernom = $bdd->prepare("UPDATE utilisateurs SET nom = ? WHERE id = ?");
-                $insernom->execute(array($nom, $_SESSION['id']));
-                $reussi = "Vous avez modifié votre nom";
-            } else {
-                $erreur = "Votre nom doit contenir 2 a 18 caractères !";
-            }
-        }
 
         if (!empty($_POST['login'])) {
             $loginlenght = strlen($login);
@@ -52,7 +27,7 @@ if (isset($_SESSION['id'])) {
             }
         }
 
-        if (!empty($_POST['password']) and !empty($_POST['confirm_password'])) {
+        if (!empty($_POST['password'])) {
             if ($password == $confirm_password) {
                 $inserpassword = $bdd->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
                 $inserpassword->execute(array($password, $_SESSION['id']));
@@ -63,6 +38,10 @@ if (isset($_SESSION['id'])) {
         }
     }
 
+    if (isset($_POST['golivreor'])) {
+        header('Location: ./livre-or.php');
+    }
+
 ?>
 
     <!DOCTYPE html>
@@ -71,33 +50,33 @@ if (isset($_SESSION['id'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/inscription.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/sign-in-and-up.css">
         <link rel="shortcut icon" href="./img/fav.png" type="image/png">
         <title>Édition du compte</title>
     </head>
 
     <body>
         <header>
-            <h1>
-                <a href="./main.php">Éditer le compte</a>
-            </h1>
+            <div class="logo">
+                <img src="./img/golden-book.png" alt="">
+                <h2>Golden Book</h2>
+            </div>
+            <nav>
+                <form action="" method="post" class="formgoto">
+                    <button type="submit" name="golivreor">
+                        <h2 title="Livre d'or">Livre d'or</h2>
+                    </button>
+                </form>
+            </nav>
         </header>
         <main>
             <form action="" method="POST">
-                <div class="container-input">
-                    <input type="text" name="prenom" class="login-input" placeholder="Prenom" value="">
-                </div>
-                <div class="container-input">
-                    <input type="text" name="nom" class="login-input" placeholder="Nom" value="">
-                </div>
                 <div class="container-input">
                     <input type="mail" name="login" class="login-input" placeholder="Login" value="">
                 </div>
                 <div class="container-input">
                     <input type="password" name="password" class="login-input" placeholder="Mot de Passe">
-                </div>
-                <div class="container-input">
-                    <input type="password" name="confirm_password" class="login-input" placeholder="Retapez le Mot de Passe">
                 </div>
 
                 <?php

@@ -16,8 +16,8 @@ if (isset($_POST['form-sign-in'])) {
             $usersinfo = $requsers->fetch();
 
             $_SESSION['id'] = $usersinfo['id'];
-            
-            header("Location: ./main.php");
+
+            header("Location: ./livre-or.php");
         } else {
             $erreur = "Compte Introuvable";
         }
@@ -33,7 +33,7 @@ if (isset($_POST['form-sign-in'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/inscription.css">
+    <link rel="stylesheet" href="./css/sign-in-and-up.css">
     <link rel="shortcut icon" href="./img/fav.png" type="image/png">
     <title>Connexion</title>
 </head>

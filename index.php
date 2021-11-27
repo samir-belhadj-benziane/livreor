@@ -21,16 +21,17 @@ if (isset($_POST['gosignup'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./img/fav.png" type="image/png">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Menu principal</title>
+    <title>Menu principal du Golden Book</title>
 </head>
 
 <body>
     <header>
-        <h1>Menu principal</h1>
-    </header>
-    <main>
-        <form action="" method="post" class="formgoto">
-            <div class="container-of-btn">
+        <div class="logo">
+            <img src="./img/golden-book.png" alt="">
+            <h2>Golden Book</h2>
+        </div>
+        <nav>
+            <form action="" method="post" class="formgoto">
                 <button type="submit" name="gosignup">
                     <h2>Incription</h2>
                 </button>
@@ -40,8 +41,12 @@ if (isset($_POST['gosignup'])) {
                 <button type="submit" name="gogit">
                     <h2>GitHub</h2>
                 </button>
-            </div>
-        </form>
+            </form>
+        </nav>
+    </header>
+    <main>
+
+
     </main>
 </body>
 
