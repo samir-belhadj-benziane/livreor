@@ -6,9 +6,11 @@ if (isset($_SESSION['id'])) {
 
     include('./fileconfig/configusers.php');
 
-    $getmess = $bdd->prepare("SELECT * FROM commentaires WHERE id_utilisateur = ? ORDER BY date DESC ");
-    $getmess->execute(array($_SESSION['id']));
-    $getmessinfos = $getmess->fetchAll();
+    // $getmess = $bdd->prepare("SELECT * FROM commentaires WHERE id_utilisateur = ? ORDER BY date DESC ");
+    // $getmess->execute(array($_SESSION['id']));
+    // $getmessinfos = $getmess->fetchAll();
+
+    $getmess = $bdd->query("SELECT * FROM commentaires ORDER BY date DESC ");
 
     if (isset($_POST['goprofil'])) {
         header('Location: ./profil.php');
@@ -52,7 +54,7 @@ if (isset($_SESSION['id'])) {
             </nav>
         </header>
         <main id="main-dor">
-            <?php foreach ($getmessinfos as $messinfos) {
+            <!-- <?php foreach ($getmessinfos as $messinfos) {
                 $getusmes = $bdd->prepare("SELECT * FROM utilisateurs WHERE id = ?");
                 $getusmes->execute(array($messinfos['id_utilisateur']));
                 $getusmesinfos = $getusmes->fetch();
@@ -64,6 +66,21 @@ if (isset($_SESSION['id'])) {
                     </div>
                     <div class="body-goldenbook">
                         <p><?php echo $messinfos['commentaire'] ?></p>
+                    </div>
+                </div>
+            <?php } ?> -->
+            <?php while ($getmessinfos = $getmess->fetch()) {
+                $getusmes = $bdd->prepare("SELECT * FROM utilisateurs WHERE id = ?");
+                $getusmes->execute(array($getmessinfos['id_utilisateur']));
+                $getusmesinfos = $getusmes->fetch();
+            ?>
+                <div class="content-goldenbook">
+                    <div class="top-goldenbook">
+                        <h2><?php echo $getusmesinfos['login'] ?></h2>
+                        <p><?php echo $getmessinfos['date'] ?></p>
+                    </div>
+                    <div class="body-goldenbook">
+                        <p><?php echo $getmessinfos['commentaire'] ?></p>
                     </div>
                 </div>
             <?php } ?>
