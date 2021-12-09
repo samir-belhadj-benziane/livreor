@@ -18,12 +18,12 @@ if (isset($_SESSION['id'])) {
                 if ($logincount == 0) {
                     $inserlogin = $bdd->prepare("UPDATE utilisateurs SET login = ? WHERE id = ?");
                     $inserlogin->execute(array($login, $_SESSION['id']));
-                    $reussi = "Vous avez modifié votre mail";
+                    $reussi = "Vous avez modifié votre login";
                 } else {
                     $erreur = "Login deja éxistante !";
                 }
             } else {
-                $erreur = "Votre Adresse Mail n'est pas valide";
+                $erreur = "Votre Login n'est pas valide";
             }
         }
 
@@ -72,6 +72,7 @@ if (isset($_SESSION['id'])) {
         </header>
         <main>
             <form action="" method="POST">
+                <h1>Mon Profil</h1>
                 <div class="container-input">
                     <input type="mail" name="login" class="login-input" placeholder="Login" value="">
                 </div>
